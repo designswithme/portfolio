@@ -1,6 +1,5 @@
 body {
-  background-color: #a3d4c7;
-}
-h1 {
-  color: red;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: white;
 }
