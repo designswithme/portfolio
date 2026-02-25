@@ -3,3 +3,28 @@ body {
   font-family: 'Poppins', sans-serif;
   background-color: white;
 }
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 300px;
+  background-color: #a3d4c7;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.sidebar a {
+  display: block;
+  margin-top: 20px;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+}
+
+.main {
+  flex: 1;
+  padding: 60px;
+}
