@@ -63,7 +63,16 @@ body {
   flex: 1;
   padding: 80px;
 }
+/* HELLO I'M NASHE */
+.hero-header-img{
+  display: block;
+  max-width: 900px;   /* controls size */
+  width: 100%;
+  height: auto;
+  margin: 0 auto 40px auto; /* centers + spacing under */
+}
 
+/* HOME PAGE IMAGE OF ME AND PARAGRAPH */
 .hero {
   display: flex;
   align-items: center;
