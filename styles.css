@@ -41,7 +41,8 @@ body {
 .sidebar nav {
   width: 100%;
   text-align: center;
-  margin-top: 2950px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .sidebar nav a {
