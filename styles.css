@@ -25,11 +25,11 @@ body {
   width: 110px;
   height: auto;
   display: block;
-  margin-bottom: 20px;   
+  margin-bottom: 10px;   
 }
 
 .tagline {
- margin: 2px 0 40px 0;
+ margin: 4px 0 40px 0;
   font-size: 15px;
   font-weight: 300;
   letter-spacing: 1px;
