@@ -63,3 +63,131 @@ body {
   flex: 1;
   padding: 80px;
 }
+
+/* HERO LAYOUT */
+.hero{
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-top: 80px;
+}
+
+/* LEFT (PHOTO) */
+.hero-left{
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.photo-wrap{
+  position: relative;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+/* outer ring */
+.photo-wrap::before{
+  content:"";
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  border: 6px solid rgba(163,212,199,0.95);
+}
+
+/* accent circles behind photo */
+.photo-wrap::after{
+  content:"";
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: rgba(237,186,166,0.75);
+  left: 150px;
+  top: 140px;
+  z-index: -1;
+}
+
+/* extra outlined circle behind */
+.hero-left::before{
+  content:"";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid rgba(237,186,166,0.7);
+  left: 145px;
+  top: 20px;
+  z-index: -2;
+}
+
+.hero-photo{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 6px solid white; /* clean white rim like your screenshot */
+}
+
+/* RIGHT (TEXT) */
+.hero-right{
+  max-width: 620px;
+}
+
+.hero-title{
+  font-size: 34px;
+  font-weight: 600;
+  margin: 0 0 14px 0;
+  line-height: 1.2;
+  color: #a3d4c7;
+}
+
+.title-accent{
+  color: #edbaa6;
+}
+
+.hero-text{
+  margin: 0 0 22px 0;
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 300;
+  color: #58a9a0; /* soft teal like your example */
+}
+
+/* BUTTON */
+.hero-btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding: 12px 22px;
+  background: #6fb7b1;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: 0.25s ease;
+}
+
+.hero-btn:hover{
+  transform: translateY(-1px);
+  background: #edbaa6;
+}
+
+.arrow{
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .hero{
+    flex-direction: column;
+    text-align: center;
+    padding-top: 40px;
+  }
+  .hero-right{ max-width: 700px; }
+}
