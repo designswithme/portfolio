@@ -93,25 +93,29 @@ body {
   color: #edbaa6;
 }
 
-.hero-text {
+.hero-text { 
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.7;      /* slightly more breathable */
   font-weight: 300;
-  margin-bottom: 24px;
-  color: #58a9a0;
+  margin-bottom: 28px;   /* more separation from button */
+  color: #5aa7a0;        /* slightly softer teal */
 }
 
 .hero-btn {
-  display: inline-block;
-  padding: 12px 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 26px;
   background: #6fb7b1;
   color: white;
   text-decoration: none;
   letter-spacing: 1px;
-  transition: 0.3s ease;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
 .hero-btn:hover {
   background: #edbaa6;
+  transform: translateY(-2px); /* subtle lift */
 }
 
