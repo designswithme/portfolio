@@ -37,6 +37,7 @@ body {
   flex-direction: column;
   align-items: center;
 }
+
 .sidebar nav {
   width: 100%;
   text-align: center;
@@ -55,6 +56,8 @@ body {
 
 .sidebar nav a:hover {
   color: #edbaa6;
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 3px rgba(255,255,255,0.25));
 }
 
 /* LINKEDIN HOVER */
