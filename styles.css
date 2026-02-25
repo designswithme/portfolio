@@ -9,11 +9,27 @@ body {
   min-height: 100vh;
 }
 
+/* SIDEBAR */
 .sidebar {
   width: 300px;
   background-color: #a3d4c7;
   padding: 40px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.tagline {
+  font-size: 14px;
+  color: white;
+  margin-bottom: 40px;
 }
 
 .sidebar a {
@@ -21,9 +37,11 @@ body {
   margin-top: 20px;
   text-decoration: none;
   color: white;
-  font-weight: 500;
+  font-weight: 300;
+  letter-spacing: 1.5px;
 }
 
+/* MAIN CONTENT */
 .main {
   flex: 1;
   padding: 60px;
