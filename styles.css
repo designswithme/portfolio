@@ -41,7 +41,7 @@ body {
 .sidebar nav {
   width: 100%;
   text-align: center;
-  margin-top: 300px;
+  margin-top: 2950px;
 }
 
 .sidebar nav a {
@@ -53,7 +53,7 @@ body {
   margin: 10px 0;
   transition: transform 0.3s ease, filter 0.3s ease, color 0.3s ease;
 }
-
+/* MENU HOVER */
 .sidebar nav a:hover {
   color: white;
   transform: scale(1.03);
