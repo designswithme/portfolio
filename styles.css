@@ -25,17 +25,16 @@ body {
   width: 110px;
   height: auto;
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 5px;   /* was 30px */
 }
 
 .tagline {
-  margin: 0px 0 40px 0;
-  font-size: 16px;
+  margin: 0 0 40px 0;   /* remove top gap */
+  font-size: 15px;
   font-weight: 300;
   letter-spacing: 1px;
   color: #ffffff;
   text-align: center;
-  white-space: nowrap;
 }
 
 .sidebar nav {
