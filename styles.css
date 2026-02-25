@@ -9,18 +9,6 @@ body {
   min-height: 100vh;
 }
 
-/* SIDEBAR */
-.sidebar {
-  width: 360px;
-  background-color: #a3d4c7;
-  padding: 40px 40px;
-  box-sizing: border-box;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 /* LOGO */
 .logo-img {
   width: 110px;
@@ -38,6 +26,17 @@ body {
   text-align: center;
 }
 
+/* SIDEBAR */
+.sidebar {
+  width: 360px;
+  background-color: #a3d4c7;
+  padding: 40px 40px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .sidebar nav {
   width: 100%;
   text-align: center;
