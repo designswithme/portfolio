@@ -1,1 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio | Nashae Carter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <a href="index.html">
+      <img src="logo.png" class="logo-img" alt="Logo">
+    </a>
+
+    <p class="tagline">Where Your Vision Takes Shape</p>
+
+    <nav class="nav">
+      <a href="portfolio.html" class="nav-link active">PORTFOLIO</a>
+      <a href="#">RÉSUMÉ</a>
+      <a href="#">CONTACT</a>
+
+      <a href="https://github.com/designswithme" target="_blank">
+        GitHub
+      </a>
+
+      <a href="https://www.linkedin.com/in/nashae-carter/" target="_blank">
+        <img src="linkedin-icon.png" class="icon-img">
+      </a>
+    </nav>
+
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+
+    <h1 class="page-title">Portfolio</h1>
+
+    <!-- TAB BUTTONS -->
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="graphic">Graphic Design</button>
+      <button class="tab-btn" data-tab="photo">Photography</button>
+      <button class="tab-btn" data-tab="web">Web Design</button>
+    </div>
+
+    <!-- GRAPHIC DESIGN -->
+    <div class="tab-content active" id="graphic">
+      <div class="grid">
+        <div class="card">Project 1</div>
+        <div class="card">Project 2</div>
+        <div class="card">Project 3</div>
+      </div>
+    </div>
+
+    <!-- PHOTOGRAPHY -->
+    <div class="tab-content" id="photo">
+      <div class="grid">
+        <div class="card">Photo 1</div>
+        <div class="card">Photo 2</div>
+        <div class="card">Photo 3</div>
+      </div>
+    </div>
+
+    <!-- WEB DESIGN -->
+    <div class="tab-content" id="web">
+      <div class="grid">
+        <div class="card">Website 1</div>
+        <div class="card">Website 2</div>
+        <div class="card">Website 3</div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
