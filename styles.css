@@ -97,8 +97,8 @@ body {
   font-size: 16px;
   line-height: 1.7;      /* slightly more breathable */
   font-weight: 300;
-  margin-bottom: 28px;   /* more separation from button */
-  color: #5aa7a0;        /* slightly softer teal */
+  margin-bottom: 28px;   /*separation from button */
+  color: #64aeb6;        
 }
 
 .hero-btn {
