@@ -57,7 +57,8 @@ body {
 /* MENU HOVER */
 .sidebar nav a:hover {
   color: #edbaa6;
-  text-shadow: 0 0 3px rgba(255,255,255,0.25);
+  font-weight: 400;
+  text-shadow: 0 0 3px rgba(255,255,255,0.2);
 }
 
 /* LINKEDIN HOVER */
