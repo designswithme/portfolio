@@ -13,7 +13,7 @@ body {
 .sidebar {
   width: 360px;
   background-color: #a3d4c7;
-  padding: 60px 40px;
+  padding: 40px 40px;
   box-sizing: border-box;
 
   display: flex;
@@ -23,29 +23,11 @@ body {
 
 .logo-img {
   width: 220px;
-  margin-bottom: 80px;
-}
-
-.sidebar nav {
-  width: 100%;
-  text-align: center;
-}
-
-.sidebar nav a {
+  height: auto;
   display: block;
-  text-decoration: none;
-  color: white;
-  font-weight: 300;
-  letter-spacing: 1.5px;
-  margin: 18px 0;
-  transition: 0.3s ease;
+  margin-bottom: 60px;
 }
 
-.sidebar nav a:hover {
-  color: #edbaa6;
-}
-
-/* NAVIGATION */
 .sidebar nav {
   width: 100%;
   text-align: center;
