@@ -58,6 +58,18 @@ body {
   color: #edbaa6;
 }
 
+/* LINKEDIN HOVER */
+.linkedin img {
+  width: 36px;   /* or whatever size you're using */
+  height: auto;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.linkedin:hover img {
+  transform: scale(1.15);
+}
+
 /* MAIN */
 .main {
   flex: 1;
