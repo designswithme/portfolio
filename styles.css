@@ -55,6 +55,7 @@ body {
 }
 /* MENU HOVER */
 .sidebar nav a:hover {
+  font-weight: 500;
   color: white;
   transform: scale(1.03);
   background: rgba(255,255,255,0.15);
