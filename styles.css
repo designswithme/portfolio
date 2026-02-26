@@ -101,12 +101,28 @@ body {
 .main {
   flex: 1;
   height: 100vh;
-  overflow-y: auto;   /* THIS is what scrolls */
+  overflow-y: auto;
   overflow-x: hidden;
   padding: 80px;
   -webkit-overflow-scrolling: touch;
-}
 
+  position: relative;
+
+  /* Background decor images */
+  background-image:
+    url("assets/images/decor/background-curved-line_03.jpg"),
+    url("assets/images/decor/background-circlesand-lines_02.jpg");
+
+  background-repeat: no-repeat, no-repeat;
+
+  background-position:
+    right top,
+    right bottom;
+
+  background-size:
+    420px auto,
+    600px auto;
+}
 /* =========================
    HERO SECTION
 ========================= */
