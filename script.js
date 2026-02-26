@@ -1,23 +1,39 @@
 const buttons = document.querySelectorAll(".tab-btn");
 const cards = document.querySelectorAll(".card");
 
-buttons.forEach(button => {
-  button.addEventListener("click", () => {
+const ANIM_MS = 250;
 
-    // remove active state from all buttons
-    buttons.forEach(btn => btn.classList.remove("active"));
+function hideCard(card) {
+  if (card.classList.contains("is-hidden")) return;
+
+  card.classList.add("is-hiding");
+  setTimeout(() => {
+    card.classList.add("is-hidden");
+  }, ANIM_MS);
+}
+
+function showCard(card) {
+  card.classList.remove("is-hidden");
+  requestAnimationFrame(() => {
+    card.classList.remove("is-hiding");
+  });
+}
+
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    buttons.forEach((btn) => btn.classList.remove("active"));
     button.classList.add("active");
 
     const filter = button.dataset.filter;
 
-    cards.forEach(card => {
-      if (filter === "all") {
-        card.style.display = "block";
+    cards.forEach((card) => {
+      const category = card.dataset.category;
+
+      if (filter === "all" || category === filter) {
+        showCard(card);
       } else {
-        card.style.display =
-          card.dataset.category === filter ? "block" : "none";
+        hideCard(card);
       }
     });
-
   });
 });
