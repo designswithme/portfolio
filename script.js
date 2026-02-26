@@ -10,6 +10,7 @@ function hideCard(card) {
   card.classList.add("is-hiding");
   setTimeout(() => {
     card.classList.add("is-hidden");
+    card.classList.remove("is-hiding"); // ✅ cleanup
   }, ANIM_MS);
 }
 
@@ -32,12 +33,11 @@ let visibleCards = [];
 let currentIndex = 0;
 
 function getVisibleCards() {
-  // Only cards that match the current filter AND are not hidden
   return cards.filter((card) => {
     const category = card.dataset.category;
     const matchesFilter = currentFilter === "all" || category === currentFilter;
-    const notHidden = !card.classList.contains("is-hidden");
-    return matchesFilter && notHidden;
+    const isGone = card.classList.contains("is-hidden") || card.classList.contains("is-hiding");
+    return matchesFilter && !isGone;
   });
 }
 
