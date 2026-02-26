@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>MyResume</title>
+  <title>Résumé</title>
 
   <link rel="stylesheet" href="styles.css">
 
@@ -18,76 +18,54 @@
 
     .resume-shell {
       max-width: 1100px;
-      margin: 28px auto;
-      padding: 0 18px 28px;
+      margin: 40px auto;
+      padding: 0 18px 40px;
     }
 
     .resume-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 14px;
+      margin-bottom: 24px;
     }
 
-    .resume-top h1 {
+    .resume-title {
       margin: 0;
       font-size: 22px;
       font-weight: 600;
-      letter-spacing: 0.5px;
-      color: #6fb7b1; /* matches your site */
+      color: #6fb7b1; /* matches your hero title */
     }
 
-    .resume-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    /* Buttons: translucent + square + consistent width */
     .btn {
-      min-width: 160px;          /* makes Print match the others */
       display: inline-flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
 
-      padding: 12px 18px;
-      border-radius: 0;          /* square like your site */
+      width: 160px;
+      height: 46px;
+
+      border-radius: 0;
       border: 1px solid rgba(111, 183, 177, 0.35);
 
-      background: rgba(111, 183, 177, 0.12); /* translucent teal */
-      color: #2c6f6a;            /* readable on white */
-      cursor: pointer;
-      text-decoration: none;
-      font-weight: 600;
-      letter-spacing: 0.6px;
+      background: rgba(111, 183, 177, 0.12);
+      color: #2c6f6a;
 
-      transition: transform 0.12s ease, background 0.12s ease, border-color 0.12s ease;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-decoration: none;
+      cursor: pointer;
+
+      transition: all 0.2s ease;
     }
 
     .btn:hover {
-      background: rgba(237, 186, 166, 0.22); /* translucent peach hover */
+      background: rgba(237, 186, 166, 0.22);
       border-color: rgba(237, 186, 166, 0.55);
       transform: translateY(-1px);
     }
 
-    /* “Primary” (Download) – still translucent but a touch stronger */
-    .btn.primary {
-      background: rgba(111, 183, 177, 0.22);
-      border-color: rgba(111, 183, 177, 0.55);
-      color: #205a55;
-    }
-
-    .btn.primary:hover {
-      background: rgba(237, 186, 166, 0.30);
-      border-color: rgba(237, 186, 166, 0.65);
-    }
-
-    /* Light container so the page doesn't feel dark */
     .pdf-frame {
       background: #f8f8f8;
-      border-radius: 0; /* keep square */
       padding: 14px;
       border: 1px solid #e5e5e5;
     }
@@ -96,15 +74,20 @@
       width: 100%;
       height: min(85vh, 980px);
       border: 0;
-      border-radius: 0;          /* square */
-      background: #fff;
-      box-shadow: 0 18px 45px rgba(0,0,0,0.18); /* lighter shadow */
+      background: white;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.15);
     }
 
-    /* Optional: stack buttons nicely on small screens */
     @media (max-width: 560px) {
-      .resume-actions { width: 100%; }
-      .btn { width: 100%; min-width: 0; }
+      .resume-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .btn {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -112,21 +95,8 @@
 <body>
   <div class="resume-shell">
     <div class="resume-top">
-      <h1>My Resume</h1>
-
-      <div class="resume-actions">
-        <a class="btn" href="./index.html">← Back</a>
-
-        <button class="btn" type="button" onclick="window.print()">Print</button>
-
-        <a class="btn primary" href="assets/resume/github-resume.pdf" download>
-          Download PDF
-        </a>
-
-        <a class="btn" href="assets/resume/github-resume.pdf" target="_blank" rel="noopener">
-          Open
-        </a>
-      </div>
+      <h1 class="resume-title">Résumé</h1>
+      <a class="btn" href="./index.html">← Back</a>
     </div>
 
     <div class="pdf-frame">
