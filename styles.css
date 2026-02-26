@@ -220,9 +220,8 @@ body {
 .grid{
   column-count: 3;
   column-gap: 24px;
-
-  max-width: 1100px;   /* controls gallery width */
-  margin: 0 auto;      /* centers it */
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .card{
@@ -233,7 +232,7 @@ body {
 
   background: transparent;
   padding: 0;
-  border-radius: 0;   /* square */
+  border-radius: 0;
   overflow: hidden;
   cursor: pointer;
 
@@ -244,14 +243,20 @@ body {
 
 .card img{
   width: 100%;
-  height: auto;      
+  height: auto;
   display: block;
-  border-radius: 0;   /* square */
+  border-radius: 0;
+
+  transition: transform 0.3s ease; /* ✅ zoom transition */
 }
 
-/* optional hover */
+/* lift + zoom */
 .card:hover{
   transform: translateY(-5px);
+}
+
+.card:hover img{
+  transform: scale(1.03);
 }
 
 /* Responsive */
@@ -263,7 +268,6 @@ body {
 }
 
 /* Fade animations */
-
 .card.is-hiding {
   opacity: 0;
   transform: translateY(8px);
