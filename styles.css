@@ -195,7 +195,7 @@ body {
   color: white;
   letter-spacing: 0.3px;
   font-weight: 600;
-  font-size: 19px
+  font-size: 19px;
   border-radius: 0;
   transition: all 0.3s ease;
 }
@@ -236,7 +236,7 @@ body {
 
 .card img {
   width: 100%;
-  height: 100%;
+  height: auto;
   display: block;
   aspect-ratio: 4 / 3;
   object-fit: cover;
@@ -319,10 +319,4 @@ body {
 .lightbox-prev { left: 25px; }
 .lightbox-next { right: 25px; }
 
-/* To show thumbnails inside cards */
-.card img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}
+
