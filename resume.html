@@ -1,1 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resume</title>
 
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .resume-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .resume-buttons {
+      margin-bottom: 20px;
+    }
+
+    .resume-buttons a,
+    .resume-buttons button {
+      padding: 10px 18px;
+      margin: 5px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      background-color: #a3d4c7;
+      color: #000;
+      font-weight: 600;
+    }
+
+    iframe {
+      width: 100%;
+      height: 85vh;
+      border-radius: 12px;
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="resume-container">
+    <h1>Resume</h1>
+
+    <div class="resume-buttons">
+      <button onclick="window.print()">Print</button>
+
+      <a href="assets/resume/github-resume.pdf" download>
+        Download PDF
+      </a>
+
+      <a href="assets/resume/github-resume.pdf" target="_blank">
+        Open in New Tab
+      </a>
+    </div>
+
+    <iframe 
+      src="assets/resume/github-resume.pdf#view=FitH">
+    </iframe>
+  </div>
+
+</body>
+</html>
