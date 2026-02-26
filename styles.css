@@ -148,6 +148,7 @@ body {
 }
 
 /* Portfolio Layout */
+
 .tabs {
   display: flex;
   gap: 10px;
@@ -168,14 +169,6 @@ body {
   background-color: #edbaa6;
 }
 
-.tab-content {
-  display: none;
-}
-
-.tab-content.active {
-  display: block;
-}
-
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -187,10 +180,23 @@ body {
   padding: 60px 20px;
   text-align: center;
   border-radius: 10px;
-  transition: 0.3s ease;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .card:hover {
   background-color: #edbaa6;
   transform: translateY(-5px);
+}
+/* Fade out animation */
+.card.is-hiding {
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+}
+
+/* Completely remove from layout after fade */
+.card.is-hidden {
+  display: none;
 }
