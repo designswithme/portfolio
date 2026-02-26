@@ -41,7 +41,8 @@ body {
 .sidebar nav {
   width: 100%;
   text-align: center;
-  margin-top: 350px;   /* or whatever number you liked */
+  margin-top: auto;   /* pushes nav down */
+  margin-bottom: 18px; /* small space before linkedin */
 }
 
 .sidebar nav a {
