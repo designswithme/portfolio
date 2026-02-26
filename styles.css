@@ -214,37 +214,49 @@ body {
 }
 
 /* =========================
-   GRID
+   GRID (MASONRY + SQUARE)
 ========================= */
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+.grid{
+  column-count: 3;
+  column-gap: 24px;
 }
 
-.card {
-  background: #f4f4f4;
+.card{
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 24px;
+  break-inside: avoid;
+
+  background: transparent;
   padding: 0;
+  border-radius: 0;   /* square */
   overflow: hidden;
-  border-radius: 10px;
   cursor: pointer;
+
   transition: transform 0.25s ease, opacity 0.25s ease;
   opacity: 1;
   transform: translateY(0);
 }
 
-.card img {
+.card img{
   width: 100%;
-  height: auto;
+  height: auto;      
   display: block;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+  border-radius: 0;   /* square */
 }
 
-.card:hover {
-  background-color: #edbaa6;
+/* optional hover */
+.card:hover{
   transform: translateY(-5px);
+}
+
+/* Responsive */
+@media (max-width: 1200px){
+  .grid{ column-count: 2; }
+}
+@media (max-width: 700px){
+  .grid{ column-count: 1; }
 }
 
 /* Fade animations */
