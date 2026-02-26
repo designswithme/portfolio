@@ -1,122 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Portfolio | Nashae Carter</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-  <div class="layout">
 
-    <!-- LEFT SIDEBAR -->
-    <aside class="sidebar">
-      <a href="index.html" class="logo-link">
-        <img src="white-logo.png" alt="Logo" class="logo-img" />
-      </a>
+<div class="layout">
 
-      <p class="tagline">Where Your Vision Takes Shape</p>
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
 
-      <nav>
-        <a href="portfolio.html">PORTFOLIO</a>
-        <a href="#">RÉSUMÉ</a>
-        <a href="#">CONTACT</a>
-      </nav>
+    <a href="index.html" class="logo-link">
+      <img src="white-logo.png" alt="Logo" class="logo-img">
+    </a>
 
-      <a href="https://www.linkedin.com/in/nashae-carter/"
-         target="_blank" rel="noopener noreferrer"
-         class="linkedin" aria-label="Visit my LinkedIn profile">
-        <img src="linkedin-icon.png" alt="LinkedIn" />
-      </a>
-    </aside>
+    <p class="tagline">Where Your Vision Takes Shape</p>
 
-    <!-- MAIN CONTENT -->
-    <main class="main">
-      <!-- Optional title (you can remove if you want it clean like the screenshot) -->
-      <!-- <h1 class="page-title">Portfolio</h1> -->
+    <nav>
+      <a href="portfolio.html">PORTFOLIO</a>
+      <a href="#">RÉSUMÉ</a>
+      <a href="#">CONTACT</a>
+    </nav>
 
-      <!-- TABS -->
-      <div class="tabs tabs-centered">
-        <button class="tab-btn active" data-tab="design">Design</button>
-        <button class="tab-btn" data-tab="illustration">Illustration</button>
-        <button class="tab-btn" data-tab="photography">Photography</button>
-        <button class="tab-btn" data-tab="web">Web Design</button>
+    <a href="https://www.linkedin.com/in/nashae-carter/"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="linkedin"
+       aria-label="Visit my LinkedIn profile">
+      <img src="linkedin-icon.png" alt="LinkedIn">
+    </a>
+
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- TAB BUTTONS -->
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="design">
+        Design & Illustration
+      </button>
+
+      <button class="tab-btn" data-tab="photography">
+        Photography
+      </button>
+
+      <button class="tab-btn" data-tab="web">
+        Web Design
+      </button>
+    </div>
+
+    <!-- DESIGN & ILLUSTRATION -->
+    <section class="tab-content active" id="design">
+      <div class="grid">
+        <div class="card">Design Project 1</div>
+        <div class="card">Illustration Project 1</div>
+        <div class="card">Design Project 2</div>
+        <div class="card">Illustration Project 2</div>
+        <div class="card">Design Project 3</div>
+        <div class="card">Illustration Project 3</div>
       </div>
+    </section>
 
-      <!-- DESIGN -->
-      <section class="tab-content active" id="design">
-        <div class="grid portfolio-grid">
-          <!-- Replace src + alt with your real work -->
-          <a class="card media-card" href="#" aria-label="Design project 1">
-            <img src="portfolio/design-1.jpg" alt="Design project 1" />
-          </a>
+    <!-- PHOTOGRAPHY -->
+    <section class="tab-content" id="photography">
+      <div class="grid">
+        <div class="card">Photo 1</div>
+        <div class="card">Photo 2</div>
+        <div class="card">Photo 3</div>
+        <div class="card">Photo 4</div>
+        <div class="card">Photo 5</div>
+        <div class="card">Photo 6</div>
+      </div>
+    </section>
 
-          <a class="card media-card" href="#" aria-label="Design project 2">
-            <img src="portfolio/design-2.jpg" alt="Design project 2" />
-          </a>
+    <!-- WEB DESIGN -->
+    <section class="tab-content" id="web">
+      <div class="grid">
+        <div class="card">Website 1</div>
+        <div class="card">Website 2</div>
+        <div class="card">Website 3</div>
+        <div class="card">Website 4</div>
+        <div class="card">Website 5</div>
+        <div class="card">Website 6</div>
+      </div>
+    </section>
 
-          <a class="card media-card" href="#" aria-label="Design project 3">
-            <img src="portfolio/design-3.jpg" alt="Design project 3" />
-          </a>
-        </div>
-      </section>
+  </main>
 
-      <!-- ILLUSTRATION -->
-      <section class="tab-content" id="illustration">
-        <div class="grid portfolio-grid">
-          <a class="card media-card" href="#" aria-label="Illustration 1">
-            <img src="portfolio/illustration-1.jpg" alt="Illustration 1" />
-          </a>
+</div>
 
-          <a class="card media-card" href="#" aria-label="Illustration 2">
-            <img src="portfolio/illustration-2.jpg" alt="Illustration 2" />
-          </a>
+<script src="script.js"></script>
 
-          <a class="card media-card" href="#" aria-label="Illustration 3">
-            <img src="portfolio/illustration-3.jpg" alt="Illustration 3" />
-          </a>
-        </div>
-      </section>
-
-      <!-- PHOTOGRAPHY -->
-      <section class="tab-content" id="photography">
-        <div class="grid portfolio-grid">
-          <a class="card media-card" href="#" aria-label="Photo 1">
-            <img src="portfolio/photo-1.jpg" alt="Photo 1" />
-          </a>
-
-          <a class="card media-card" href="#" aria-label="Photo 2">
-            <img src="portfolio/photo-2.jpg" alt="Photo 2" />
-          </a>
-
-          <a class="card media-card" href="#" aria-label="Photo 3">
-            <img src="portfolio/photo-3.jpg" alt="Photo 3" />
-          </a>
-        </div>
-      </section>
-
-      <!-- WEB DESIGN -->
-      <section class="tab-content" id="web">
-        <div class="grid portfolio-grid">
-          <a class="card media-card" href="#" aria-label="Web design 1">
-            <img src="portfolio/web-1.jpg" alt="Web design 1" />
-          </a>
-
-          <a class="card media-card" href="#" aria-label="Web design 2">
-            <img src="portfolio/web-2.jpg" alt="Web design 2" />
-          </a>
-
-          <a class="card media-card" href="#" aria-label="Web design 3">
-            <img src="portfolio/web-3.jpg" alt="Web design 3" />
-          </a>
-        </div>
-      </section>
-
-    </main>
-  </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
