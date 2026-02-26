@@ -109,19 +109,21 @@ body {
   position: relative;
 
   /* Background decor images */
-  background-image:
-    url("assets/images/decor/background-curved-line_03.jpg"),
-    url("assets/images/decor/background-circlesand-lines_02.jpg");
+background-image:
+    url("assets/images/decor/background-circlesand-lines_02.jpg"),  /* TOP now */
+    url("assets/images/decor/background-curved-line_03.jpg");        /* BOTTOM now */
 
   background-repeat: no-repeat, no-repeat;
 
+  /* push them slightly off the edges */
   background-position:
-    right top,
-    right bottom;
+    right -60px top -40px,
+    right -60px bottom -40px;
 
+  /* smaller */
   background-size:
-    420px auto,
-    600px auto;
+    320px auto,
+    380px auto;
 }
 /* =========================
    HERO SECTION
