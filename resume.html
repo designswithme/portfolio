@@ -4,18 +4,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- This controls the browser TAB title -->
   <title>MyResume</title>
 
   <link rel="stylesheet" href="styles.css">
 
   <style>
-   body {
-  margin: 0;
-  background-color: white;  /* match your site */
-  color: #333;
-  font-family: 'Poppins', sans-serif;
-}
+    body {
+      margin: 0;
+      background-color: white;
+      color: #333;
+      font-family: 'Poppins', sans-serif;
+    }
 
     .resume-shell {
       max-width: 1100px;
@@ -34,10 +33,10 @@
 
     .resume-top h1 {
       margin: 0;
-      font-size: 18px;
+      font-size: 22px;
       font-weight: 600;
       letter-spacing: 0.5px;
-      opacity: 0.9;
+      color: #6fb7b1; /* matches your site */
     }
 
     .resume-actions {
@@ -46,49 +45,66 @@
       flex-wrap: wrap;
     }
 
+    /* Buttons: translucent + square + consistent width */
     .btn {
-      padding: 10px 14px;
-      border-radius: 0px;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.06);
-      color: #fff;
+      min-width: 160px;          /* makes Print match the others */
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+
+      padding: 12px 18px;
+      border-radius: 0;          /* square like your site */
+      border: 1px solid rgba(111, 183, 177, 0.35);
+
+      background: rgba(111, 183, 177, 0.12); /* translucent teal */
+      color: #2c6f6a;            /* readable on white */
       cursor: pointer;
       text-decoration: none;
       font-weight: 600;
+      letter-spacing: 0.6px;
+
       transition: transform 0.12s ease, background 0.12s ease, border-color 0.12s ease;
     }
 
     .btn:hover {
-      background: rgba(255,255,255,0.10);
-      border-color: rgba(255,255,255,0.22);
+      background: rgba(237, 186, 166, 0.22); /* translucent peach hover */
+      border-color: rgba(237, 186, 166, 0.55);
       transform: translateY(-1px);
     }
 
+    /* “Primary” (Download) – still translucent but a touch stronger */
     .btn.primary {
-      background: #a3d4c7;
-      color: #0b0b0b;
-      border-color: transparent;
+      background: rgba(111, 183, 177, 0.22);
+      border-color: rgba(111, 183, 177, 0.55);
+      color: #205a55;
     }
 
     .btn.primary:hover {
-      background: #b5e1d6;
+      background: rgba(237, 186, 166, 0.30);
+      border-color: rgba(237, 186, 166, 0.65);
     }
 
+    /* Light container so the page doesn't feel dark */
     .pdf-frame {
-      background: #2a2a2a;
-      border-radius: 14px;
+      background: #f8f8f8;
+      border-radius: 0; /* keep square */
       padding: 14px;
-      border: 1px solid rgba(255,255,255,0.10);
+      border: 1px solid #e5e5e5;
     }
 
-    /* “Paper” look */
     iframe {
       width: 100%;
       height: min(85vh, 980px);
       border: 0;
-      border-radius: 10px;
+      border-radius: 0;          /* square */
       background: #fff;
-      box-shadow: 0 18px 45px rgba(0,0,0,0.55);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.18); /* lighter shadow */
+    }
+
+    /* Optional: stack buttons nicely on small screens */
+    @media (max-width: 560px) {
+      .resume-actions { width: 100%; }
+      .btn { width: 100%; min-width: 0; }
     }
   </style>
 </head>
@@ -99,7 +115,7 @@
       <h1>My Resume</h1>
 
       <div class="resume-actions">
-        <a class="btn" href="index.html">← Back</a>
+        <a class="btn" href="./index.html">← Back</a>
 
         <button class="btn" type="button" onclick="window.print()">Print</button>
 
@@ -114,7 +130,7 @@
     </div>
 
     <div class="pdf-frame">
-      <iframe src="assets/resume/github-resume.pdf#view=FitH"></iframe>
+      <iframe src="assets/resume/github-resume.pdf#view=FitH" title="Resume PDF"></iframe>
     </div>
   </div>
 </body>
