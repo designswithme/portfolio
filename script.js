@@ -1,19 +1,23 @@
+const buttons = document.querySelectorAll(".tab-btn");
+const cards = document.querySelectorAll(".card");
 
-document.addEventListener("DOMContentLoaded", function () {
+buttons.forEach(button => {
+  button.addEventListener("click", () => {
 
-  const tabs = document.querySelectorAll(".tab-btn");
-  const contents = document.querySelectorAll(".tab-content");
+    // remove active state from all buttons
+    buttons.forEach(btn => btn.classList.remove("active"));
+    button.classList.add("active");
 
-  tabs.forEach(tab => {
-    tab.addEventListener("click", function () {
+    const filter = button.dataset.filter;
 
-      tabs.forEach(btn => btn.classList.remove("active"));
-      contents.forEach(content => content.classList.remove("active"));
-
-      tab.classList.add("active");
-      document.getElementById(tab.dataset.tab).classList.add("active");
-
+    cards.forEach(card => {
+      if (filter === "all") {
+        card.style.display = "block";
+      } else {
+        card.style.display =
+          card.dataset.category === filter ? "block" : "none";
+      }
     });
-  });
 
+  });
 });
