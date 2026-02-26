@@ -51,24 +51,59 @@
     <div class="grid">
 
       <!-- DESIGN & ILLUSTRATION -->
-      <div class="card" data-category="design">Design Project 1</div>
-      <div class="card" data-category="design">Illustration 1</div>
-      <div class="card" data-category="design">Design Project 2</div>
+      <div class="card" data-category="design" data-full="images/design-1.jpg">
+        <img src="images/design-1.jpg" alt="Design Project 1">
+      </div>
+
+      <div class="card" data-category="design" data-full="images/design-2.jpg">
+        <img src="images/design-2.jpg" alt="Illustration 1">
+      </div>
+
+      <div class="card" data-category="design" data-full="images/design-3.jpg">
+        <img src="images/design-3.jpg" alt="Design Project 2">
+      </div>
 
       <!-- PHOTOGRAPHY -->
-      <div class="card" data-category="photo">Photo 1</div>
-      <div class="card" data-category="photo">Photo 2</div>
-      <div class="card" data-category="photo">Photo 3</div>
+      <div class="card" data-category="photo" data-full="images/photo-1.jpg">
+        <img src="images/photo-1.jpg" alt="Photo 1">
+      </div>
+
+      <div class="card" data-category="photo" data-full="images/photo-2.jpg">
+        <img src="images/photo-2.jpg" alt="Photo 2">
+      </div>
+
+      <div class="card" data-category="photo" data-full="images/photo-3.jpg">
+        <img src="images/photo-3.jpg" alt="Photo 3">
+      </div>
 
       <!-- WEB DESIGN -->
-      <div class="card" data-category="web">Website 1</div>
-      <div class="card" data-category="web">Website 2</div>
-      <div class="card" data-category="web">Website 3</div>
+      <div class="card" data-category="web" data-full="images/web-1.jpg">
+        <img src="images/web-1.jpg" alt="Website 1">
+      </div>
+
+      <div class="card" data-category="web" data-full="images/web-2.jpg">
+        <img src="images/web-2.jpg" alt="Website 2">
+      </div>
+
+      <div class="card" data-category="web" data-full="images/web-3.jpg">
+        <img src="images/web-3.jpg" alt="Website 3">
+      </div>
 
     </div>
 
   </main>
 
+</div>
+
+<!-- LIGHTBOX MODAL -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">×</button>
+
+  <button class="lightbox-arrow lightbox-prev" id="lightboxPrev" aria-label="Previous">‹</button>
+
+  <img class="lightbox-img" id="lightboxImg" alt="Expanded portfolio item">
+
+  <button class="lightbox-arrow lightbox-next" id="lightboxNext" aria-label="Next">›</button>
 </div>
 
 <script src="script.js"></script>
