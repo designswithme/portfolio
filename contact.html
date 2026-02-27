@@ -1,1 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* Contact page content */
+    .contact-wrap {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .contact-title {
+      font-size: 42px;
+      font-weight: 700;
+      color: #a3d4c7;
+      margin: 0 0 10px 0;
+    }
+
+    .contact-desc {
+      color: #64aeb6;
+      font-weight: 300;
+      line-height: 1.7;
+      max-width: 720px;
+      margin: 0 0 36px 0;
+    }
+
+    .contact-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .label {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.7px;
+      color: #edbaa6;
+      text-transform: none;
+    }
+
+    .input,
+    .textarea {
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      padding: 12px 14px;
+      border-radius: 0;
+      border: 2px solid #6fb7b1;
+      outline: none;
+      background: white;
+      color: #2c6f6a;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .input::placeholder,
+    .textarea::placeholder {
+      color: rgba(44, 111, 106, 0.45);
+      font-weight: 300;
+    }
+
+    .input:focus,
+    .textarea:focus {
+      border-color: #edbaa6;
+      box-shadow: 0 0 0 3px rgba(237, 186, 166, 0.25);
+    }
+
+    .textarea {
+      min-height: 170px;
+      resize: vertical;
+    }
+
+    .submit-row {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 6px;
+    }
+
+    .contact-note {
+      color: rgba(100, 174, 182, 0.9);
+      font-size: 13px;
+      font-weight: 300;
+    }
+
+    /* Success / error message */
+    .form-status {
+      grid-column: 1 / -1;
+      margin-top: 10px;
+      font-weight: 400;
+      color: #2c6f6a;
+      display: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .contact-form {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="layout">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar">
+      <a href="index.html" class="logo-link">
+        <img src="white-logo.png" alt="Logo" class="logo-img">
+      </a>
+
+      <p class="tagline">Where Your Vision Takes Shape</p>
+
+      <nav>
+        <a href="portfolio.html">PORTFOLIO</a>
+        <a href="resume.html">RÉSUMÉ</a>
+        <a href="contact.html">CONTACT</a>
+      </nav>
+
+      <a href="https://www.linkedin.com/in/nashae-carter/" target="_blank" rel="noopener noreferrer" class="linkedin">
+        <img src="linkedin-icon.png" alt="LinkedIn">
+      </a>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+      <div class="contact-wrap">
+        <h1 class="contact-title">Get In Touch!</h1>
+
+        <p class="contact-desc">
+          With my background in Adobe programs, HTML, CSS, WordPress and visual design,
+          I’d love to help make your visions take shape. Interested in working together?
+          Have any questions? Send me an email and I will get back to you as soon as possible.
+        </p>
+
+        <!-- IMPORTANT: Replace action URL with your Formspree endpoint -->
+        <form class="contact-form" id="contactForm"
+              action="https://formspree.io/f/YOUR_FORM_ID"
+              method="POST">
+
+          <div class="field">
+            <label class="label" for="firstName">First Name</label>
+            <input class="input" id="firstName" name="firstName" type="text" placeholder="First Name" required>
+          </div>
+
+          <div class="field">
+            <label class="label" for="lastName">Last Name</label>
+            <input class="input" id="lastName" name="lastName" type="text" placeholder="Last Name">
+          </div>
+
+          <div class="field full">
+            <label class="label" for="company">Company</label>
+            <input class="input" id="company" name="company" type="text" placeholder="Company Name">
+          </div>
+
+          <div class="field full">
+            <label class="label" for="email">Email <span style="color:#edbaa6">*</span></label>
+            <input class="input" id="email" name="email" type="email" placeholder="Email Address" required>
+          </div>
+
+          <div class="field full">
+            <label class="label" for="subject">Subject</label>
+            <input class="input" id="subject" name="subject" type="text" placeholder="Subject">
+          </div>
+
+          <div class="field full">
+            <label class="label" for="message">Your Message <span style="color:#edbaa6">*</span></label>
+            <textarea class="textarea" id="message" name="message" placeholder="Your Message" required></textarea>
+          </div>
+
+          <div class="submit-row">
+            <!-- Use your site’s button style -->
+            <button class="hero-btn" type="submit">Submit Email</button>
+            <span class="contact-note">* Required fields</span>
+          </div>
+
+          <div class="form-status" id="formStatus"></div>
+        </form>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Optional: nice success message without leaving the page -->
+  <script>
+    const form = document.getElementById('contactForm');
+    const statusEl = document.getElementById('formStatus');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      statusEl.style.display = 'none';
+      statusEl.textContent = '';
+
+      try {
+        const formData = new FormData(form);
+        const res = await fetch(form.action, {
+          method: form.method,
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          form.reset();
+          statusEl.style.display = 'block';
+          statusEl.textContent = "Thank you! Your message has been sent.";
+        } else {
+          statusEl.style.display = 'block';
+          statusEl.textContent = "Hmm—something went wrong. Please try again or email me directly.";
+        }
+      } catch (err) {
+        statusEl.style.display = 'block';
+        statusEl.textContent = "Network error. Please try again or email me directly.";
+      }
+    });
+  </script>
+</body>
+</html>
