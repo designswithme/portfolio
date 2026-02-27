@@ -196,22 +196,6 @@
     </main>
 
   </div>
-
-  <script>
-    let submitted = false;
-
-    const form = document.getElementById("contactForm");
-    const iframe = document.getElementsByName("hidden_iframe")[0];
-    const statusEl = document.getElementById("formStatus");
-
-    iframe.addEventListener("load", () => {
-      if (!submitted) return;
-
-      form.reset();
-      statusEl.style.display = "block";
-      statusEl.textContent = "Thank you! Your message has been sent.";
-      submitted = false;
-    });
-  </script>
+  
 </body>
 </html>
