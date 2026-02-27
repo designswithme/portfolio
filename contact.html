@@ -26,15 +26,6 @@
       min-height: 100vh;
     }
 
-    /* IMPORTANT: allow this flex/grid child to shrink so overflow works */
-    .main {
-      min-height: 0;                 /* critical for overflow in flex/grid layouts */
-      height: 100vh;                 /* keep the main viewport height */
-      overflow-y: auto;              /* scroll inside main area */
-      -webkit-overflow-scrolling: touch; /* keep this for smooth iOS scrolling */
-      padding-bottom: env(safe-area-inset-bottom);
-    }
-
     /* Give extra breathing room so the submit button isn't clipped at the bottom */
     .contact-wrap {
       max-width: 980px;
