@@ -1,3 +1,7 @@
+/* =========================
+   BASE
+========================= */
+
 html, body {
   height: 100%;
 }
@@ -6,7 +10,10 @@ body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   background-color: white;
-  overflow: hidden; /* prevents full page scroll */
+
+  /* Allow natural page scrolling (fixes clipped submit button / bottom cut-off issues) */
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /* =========================
@@ -15,18 +22,17 @@ body {
 
 .layout {
   display: flex;
-  height: 100vh;      /* lock layout to viewport */
-  overflow: hidden;   /* prevents sidebar stretching */
+  min-height: 100vh;     /* let content define height */
+  overflow: visible;     /* do NOT clip content */
 }
 
 /* =========================
-   SIDEBAR
+   SIDEBAR (DESKTOP)
 ========================= */
 
 .sidebar {
   width: 360px;
-  height: 100vh;      /* fixed height */
-  flex: 0 0 360px;    /* fixed width */
+  flex: 0 0 360px;
   background-color: #a3d4c7;
   padding: 40px;
   box-sizing: border-box;
@@ -34,6 +40,11 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  /* Keeps sidebar in view on desktop while main scrolls */
+  position: sticky;
+  top: 0;
+  height: 100vh;
 }
 
 /* LOGO */
@@ -95,36 +106,38 @@ body {
 }
 
 /* =========================
-   MAIN CONTENT (SCROLLABLE)
+   MAIN CONTENT
 ========================= */
 
 .main {
   flex: 1;
-  height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
+  min-height: 100vh;
+
+  /* Let the page scroll normally instead of forcing inner scroll */
+  overflow: visible;
+
   padding: 80px;
-  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
 
   position: relative;
+  -webkit-overflow-scrolling: touch;
 
   /* Background decor images */
-background-image:
-    url("assets/images/decor/background-circlesand-lines_02.jpg"),  /* TOP now */
-    url("assets/images/decor/background-curved-line_03.jpg");        /* BOTTOM now */
+  background-image:
+    url("assets/images/decor/background-circlesand-lines_02.jpg"),
+    url("assets/images/decor/background-curved-line_03.jpg");
 
   background-repeat: no-repeat, no-repeat;
 
-  /* push them slightly off the edges */
   background-position:
     right -60px top -40px,
     right -60px bottom -40px;
 
-  /* smaller */
   background-size:
     320px auto,
     380px auto;
 }
+
 /* =========================
    HERO SECTION
 ========================= */
@@ -185,6 +198,7 @@ background-image:
   letter-spacing: 1px;
   font-weight: 500;
   transition: all 0.3s ease;
+  border: none;
 }
 
 .hero-btn:hover {
@@ -235,14 +249,14 @@ background-image:
    GRID (MASONRY + SQUARE)
 ========================= */
 
-.grid{
+.grid {
   column-count: 3;
   column-gap: 24px;
   max-width: 1100px;
   margin: 0 auto;
 }
 
-.card{
+.card {
   display: inline-block;
   width: 100%;
   margin: 0 0 24px;
@@ -259,30 +273,21 @@ background-image:
   transform: translateY(0);
 }
 
-.card img{
+.card img {
   width: 100%;
   height: auto;
   display: block;
   border-radius: 0;
-
-  transition: transform 0.3s ease; /* ✅ zoom transition */
+  transition: transform 0.3s ease; /* zoom transition */
 }
 
 /* lift + zoom */
-.card:hover{
+.card:hover {
   transform: translateY(-5px);
 }
 
-.card:hover img{
+.card:hover img {
   transform: scale(1.03);
-}
-
-/* Responsive */
-@media (max-width: 1200px){
-  .grid{ column-count: 2; }
-}
-@media (max-width: 700px){
-  .grid{ column-count: 1; }
 }
 
 /* Fade animations */
@@ -356,4 +361,85 @@ background-image:
 .lightbox-prev { left: 25px; }
 .lightbox-next { right: 25px; }
 
+/* =========================
+   RESPONSIVE
+========================= */
 
+/* Grid responsive */
+@media (max-width: 1200px) {
+  .grid { column-count: 2; }
+}
+
+@media (max-width: 700px) {
+  .grid { column-count: 1; }
+}
+
+/* Overall layout responsive: sidebar becomes top header */
+@media (max-width: 900px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex: none;
+    position: relative;
+    height: auto;
+    padding: 22px 18px;
+  }
+
+  .sidebar nav {
+    margin: 18px 0 0 0;
+  }
+
+  .sidebar nav a {
+    display: inline-block;
+    margin: 0 10px;
+  }
+
+  .linkedin {
+    margin-top: 18px;
+  }
+
+  .main {
+    padding: 34px 18px 80px;
+
+    background-position:
+      right -40px top -20px,
+      right -40px bottom -20px;
+
+    background-size:
+      260px auto,
+      320px auto;
+  }
+
+  /* Hero responsive */
+  .hero {
+    flex-direction: column;
+    gap: 28px;
+    text-align: center;
+  }
+
+  .hero-photo {
+    width: min(320px, 85%);
+  }
+
+  .hero-title {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 28px;
+  }
+
+  .hero-text {
+    font-size: 15px;
+  }
+
+  .tab-btn {
+    width: 100%;
+    max-width: 360px;
+  }
+}
