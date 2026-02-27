@@ -12,9 +12,17 @@
   <link rel="stylesheet" href="styles.css" />
 
   <style>
-    .contact-wrap { max-width: 980px; margin: 0 auto; }
+    /* --- Page layout fixes: make the MAIN area scrollable --- */
+    .main {
+      height: 100vh;          /* take full viewport height */
+      overflow-y: auto;       /* allow scrolling */
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .contact-wrap { max-width: 980px; margin: 0 auto; padding-bottom: 60px; }
+
     .contact-title { font-size: 42px; font-weight: 700; color: #a3d4c7; margin: 0 0 10px 0; }
-    .contact-desc { color: #64aeb6; font-weight: 300; line-height: 1.7; max-width: 720px; margin: 0 0 36px 0; }
+    .contact-desc  { color: #64aeb6; font-weight: 300; line-height: 1.7; max-width: 720px; margin: 0 0 36px 0; }
 
     .contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
     .field { display: flex; flex-direction: column; gap: 8px; }
@@ -52,6 +60,7 @@
       align-items: center;
       gap: 16px;
       margin-top: 6px;
+      flex-wrap: wrap;
     }
 
     .contact-note {
@@ -68,6 +77,21 @@
       display: none;
     }
 
+    /* --- Button fix: remove browser default border/outline --- */
+    .hero-btn {
+      border: none !important;       /* removes the black border */
+      outline: none !important;
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    /* Keep a nice accessibility focus style (instead of the ugly default) */
+    .hero-btn:focus-visible {
+      box-shadow: 0 0 0 3px rgba(237, 186, 166, 0.35);
+    }
+
+    /* --- Success message --- */
     .success-container {
       display: none;
       margin-top: 30px;
@@ -78,11 +102,13 @@
     .success-container img {
       max-width: 100%;
       height: auto;
+      display: block;
+      margin: 0 auto;
     }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     @media (max-width: 860px) {
@@ -134,33 +160,33 @@
               onsubmit="handleSubmitStart()">
 
           <div class="field">
-            <label class="label">First Name *</label>
-            <input class="input" name="entry.324053391" type="text" placeholder="First Name" required>
+            <label class="label" for="firstName">First Name *</label>
+            <input class="input" id="firstName" name="entry.324053391" type="text" placeholder="First Name" required>
           </div>
 
           <div class="field">
-            <label class="label">Last Name *</label>
-            <input class="input" name="entry.1765451501" type="text" placeholder="Last Name" required>
+            <label class="label" for="lastName">Last Name *</label>
+            <input class="input" id="lastName" name="entry.1765451501" type="text" placeholder="Last Name" required>
           </div>
 
           <div class="field full">
-            <label class="label">Company</label>
-            <input class="input" name="entry.1187917883" type="text" placeholder="Company Name">
+            <label class="label" for="company">Company</label>
+            <input class="input" id="company" name="entry.1187917883" type="text" placeholder="Company Name">
           </div>
 
           <div class="field full">
-            <label class="label">Email *</label>
-            <input class="input" name="entry.1485938549" type="email" placeholder="Email Address" required>
+            <label class="label" for="email">Email *</label>
+            <input class="input" id="email" name="entry.1485938549" type="email" placeholder="Email Address" required>
           </div>
 
           <div class="field full">
-            <label class="label">Subject</label>
-            <input class="input" name="entry.975755683" type="text" placeholder="Subject">
+            <label class="label" for="subject">Subject</label>
+            <input class="input" id="subject" name="entry.975755683" type="text" placeholder="Subject">
           </div>
 
           <div class="field full">
-            <label class="label">Your Message *</label>
-            <textarea class="textarea" name="entry.1001882574" placeholder="Your Message" required></textarea>
+            <label class="label" for="message">Your Message *</label>
+            <textarea class="textarea" id="message" name="entry.1001882574" placeholder="Your Message" required></textarea>
           </div>
 
           <div class="submit-row">
@@ -176,7 +202,7 @@
 
         <!-- Success -->
         <div class="success-container" id="successMessage">
-    <img src="assets/email-sent.png" alt="Email Sent">
+          <img src="assets/email-sent.png" alt="Email Sent">
         </div>
 
       </div>
