@@ -12,7 +12,6 @@
   <link rel="stylesheet" href="styles.css" />
 
   <style>
-    /* Contact page content */
     .contact-wrap {
       max-width: 980px;
       margin: 0 auto;
@@ -54,7 +53,6 @@
       font-weight: 600;
       letter-spacing: 0.7px;
       color: #edbaa6;
-      text-transform: none;
     }
 
     .input,
@@ -101,7 +99,6 @@
       font-weight: 300;
     }
 
-    /* Success / error message */
     .form-status {
       grid-column: 1 / -1;
       margin-top: 10px;
@@ -110,11 +107,8 @@
       display: none;
     }
 
-    /* Responsive */
     @media (max-width: 860px) {
-      .contact-form {
-        grid-template-columns: 1fr;
-      }
+      .contact-form { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -152,85 +146,68 @@
           Have any questions? Send me an email and I will get back to you as soon as possible.
         </p>
 
-        <!-- IMPORTANT: Replace action URL with your Formspree endpoint -->
-        <form class="contact-form" id="contactForm"
-              action="https://formspree.io/f/YOUR_FORM_ID"
-              method="POST">
+        <!-- Custom POST to Google Forms -->
+        <form class="contact-form"
+          action="https://docs.google.com/forms/d/e/1FAIpQLScO0uXvKXEwOumWcO62e0o-8rF6rWEuDFkCevphVjEUjngtMw/formResponse"
+          method="POST"
+          target="hidden_iframe"
+          onsubmit="submitted=true;">
 
           <div class="field">
-            <label class="label" for="firstName">First Name</label>
-            <input class="input" id="firstName" name="firstName" type="text" placeholder="First Name" required>
+            <label class="label" for="firstName">First Name *</label>
+            <input class="input" id="firstName" name="entry.324053391" type="text" placeholder="First Name" required>
           </div>
 
           <div class="field">
-            <label class="label" for="lastName">Last Name</label>
-            <input class="input" id="lastName" name="lastName" type="text" placeholder="Last Name">
+            <label class="label" for="lastName">Last Name *</label>
+            <input class="input" id="lastName" name="entry.1765451501" type="text" placeholder="Last Name" required>
           </div>
 
           <div class="field full">
-            <label class="label" for="company">Company</label>
-            <input class="input" id="company" name="company" type="text" placeholder="Company Name">
+            <label class="label" for="company">Company *</label>
+            <input class="input" id="company" name="entry.1187917883" type="text" placeholder="Company Name" required>
           </div>
 
           <div class="field full">
-            <label class="label" for="email">Email <span style="color:#edbaa6">*</span></label>
-            <input class="input" id="email" name="email" type="email" placeholder="Email Address" required>
+            <label class="label" for="email">Email *</label>
+            <input class="input" id="email" name="entry.1485938549" type="email" placeholder="Email Address" required>
           </div>
 
           <div class="field full">
-            <label class="label" for="subject">Subject</label>
-            <input class="input" id="subject" name="subject" type="text" placeholder="Subject">
+            <label class="label" for="subject">Subject *</label>
+            <input class="input" id="subject" name="entry.975755683" type="text" placeholder="Subject" required>
           </div>
 
           <div class="field full">
-            <label class="label" for="message">Your Message <span style="color:#edbaa6">*</span></label>
-            <textarea class="textarea" id="message" name="message" placeholder="Your Message" required></textarea>
+            <label class="label" for="message">Your Message *</label>
+            <textarea class="textarea" id="message" name="entry.1001882574" placeholder="Your Message" required></textarea>
           </div>
 
           <div class="submit-row">
-            <!-- Use your site’s button style -->
             <button class="hero-btn" type="submit">Submit Email</button>
             <span class="contact-note">* Required fields</span>
           </div>
 
           <div class="form-status" id="formStatus"></div>
         </form>
+
+        <!-- prevents redirect -->
+        <iframe name="hidden_iframe" style="display:none;"></iframe>
       </div>
     </main>
 
   </div>
 
-  <!-- Optional: nice success message without leaving the page -->
   <script>
-    const form = document.getElementById('contactForm');
-    const statusEl = document.getElementById('formStatus');
+    let submitted = false;
+    const iframe = document.getElementsByName("hidden_iframe")[0];
+    const statusEl = document.getElementById("formStatus");
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      statusEl.style.display = 'none';
-      statusEl.textContent = '';
-
-      try {
-        const formData = new FormData(form);
-        const res = await fetch(form.action, {
-          method: form.method,
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (res.ok) {
-          form.reset();
-          statusEl.style.display = 'block';
-          statusEl.textContent = "Thank you! Your message has been sent.";
-        } else {
-          statusEl.style.display = 'block';
-          statusEl.textContent = "Hmm—something went wrong. Please try again or email me directly.";
-        }
-      } catch (err) {
-        statusEl.style.display = 'block';
-        statusEl.textContent = "Network error. Please try again or email me directly.";
-      }
+    iframe.addEventListener("load", () => {
+      if (!submitted) return;
+      statusEl.style.display = "block";
+      statusEl.textContent = "Thank you! Your message has been sent.";
+      submitted = false;
     });
   </script>
 </body>
