@@ -12,25 +12,11 @@
   <link rel="stylesheet" href="styles.css" />
 
   <style>
-    /* ---------------------------------------------------------
-       SCROLL FIX (your issue: can't scroll past the submit row)
-       --------------------------------------------------------- */
-
-    /* Ensure the page can actually scroll on all devices */
-    html, body {
-      height: 100%;
-    }
-
-    /* Keep layout stable but allow the main content to scroll fully */
-    .layout {
-      min-height: 100vh;
-    }
-
-    /* Give extra breathing room so the submit button isn't clipped at the bottom */
     .contact-wrap {
       max-width: 980px;
       margin: 0 auto;
-      padding: 0 18px 120px;         /* extra bottom padding = scroll past submit */
+      padding: 0 18px 140px;
+      box-sizing: border-box;
     }
 
     .contact-title {
@@ -41,7 +27,7 @@
       line-height: 1.1;
     }
 
-    .contact-desc  {
+    .contact-desc {
       color: #64aeb6;
       font-weight: 300;
       line-height: 1.7;
@@ -61,9 +47,7 @@
       gap: 8px;
     }
 
-    .field.full {
-      grid-column: 1 / -1;
-    }
+    .field.full { grid-column: 1 / -1; }
 
     .label {
       font-size: 13px;
@@ -108,7 +92,7 @@
       gap: 16px;
       margin-top: 6px;
       flex-wrap: wrap;
-      padding-bottom: 14px; /* small buffer under the row */
+      padding-bottom: 14px;
     }
 
     .contact-note {
@@ -125,7 +109,7 @@
       display: none;
     }
 
-    /* Button consistency */
+    /* keep button consistent */
     .hero-btn {
       border: none !important;
       outline: none !important;
@@ -138,15 +122,10 @@
       box-shadow: 0 0 0 3px rgba(237, 186, 166, 0.35);
     }
 
-    /* ---------------------------------------------------------
-       SUCCESS IMAGE POSITIONING (push down + align nicer)
-       --------------------------------------------------------- */
-
-    /* When success shows, make it sit lower and feel aligned with content/nav */
+    /* success image */
     .success-container {
       display: none;
-      min-height: calc(100vh - 40px); /* helps center/position inside main viewport */
-      padding-top: 70px;              /* pushes the image down */
+      padding-top: 80px;
       text-align: center;
       animation: fadeIn 0.4s ease forwards;
     }
@@ -163,18 +142,11 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ---------------------------------------------------------
-       MOBILE RESPONSIVE TUNING
-       --------------------------------------------------------- */
     @media (max-width: 860px) {
       .contact-form { grid-template-columns: 1fr; }
-
       .contact-title { font-size: 34px; }
       .contact-wrap { padding: 0 16px 120px; }
-
-      .success-container {
-        padding-top: 56px; /* slightly less push-down on smaller screens */
-      }
+      .success-container { padding-top: 56px; }
     }
 
     @media (max-width: 480px) {
@@ -189,7 +161,6 @@
 <body>
   <div class="layout">
 
-    <!-- SIDEBAR -->
     <aside class="sidebar">
       <a href="index.html" class="logo-link">
         <img src="white-logo.png" alt="Logo" class="logo-img">
@@ -208,14 +179,11 @@
       </a>
     </aside>
 
-    <!-- MAIN -->
     <main class="main">
       <div class="contact-wrap">
 
-        <!-- Intro (hide this on success) -->
         <div id="contactIntro">
           <h1 class="contact-title">Get In Touch!</h1>
-
           <p class="contact-desc">
             With my background in Adobe programs, HTML, CSS, WordPress and visual design,
             I’d love to help make your visions take shape. Interested in working together?
@@ -223,7 +191,6 @@
           </p>
         </div>
 
-        <!-- FORM -->
         <form class="contact-form"
               id="contactForm"
               action="https://docs.google.com/forms/d/e/1FAIpQLScO0uXvKXEwOumWcO62e0o-8rF6rWEuDFkCevphVjEUjngtMw/formResponse"
@@ -269,10 +236,8 @@
           <div class="form-status" id="formStatus"></div>
         </form>
 
-        <!-- Hidden iframe -->
         <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
-        <!-- Success -->
         <div class="success-container" id="successMessage">
           <img src="assets/email-sent.png" alt="Thanks! Email Sent">
         </div>
@@ -286,33 +251,22 @@
 
     function handleSubmitStart() {
       submitted = true;
-
       const status = document.getElementById("formStatus");
       status.style.display = "block";
       status.textContent = "Sending...";
-
-      // Ensure the user can scroll and the submit row isn't "stuck" at the bottom on some browsers
-      // (helps when keyboard is open on mobile)
-      setTimeout(() => {
-        const main = document.querySelector(".main");
-        if (main) main.scrollTop = main.scrollTop + 1;
-      }, 0);
     }
 
     document.getElementById("hidden_iframe").addEventListener("load", function () {
       if (!submitted) return;
 
-      // Hide intro + form + status
       document.getElementById("contactIntro").style.display = "none";
       document.getElementById("contactForm").style.display = "none";
       document.getElementById("formStatus").style.display = "none";
 
-      // Show success image only (pushed down via CSS)
       document.getElementById("successMessage").style.display = "block";
 
-      // Scroll back to top so the success image is immediately visible
-      const main = document.querySelector(".main");
-      if (main) main.scrollTop = 0;
+      /* Make sure the success image is visible right away */
+      window.scrollTo({ top: 0, behavior: "smooth" });
 
       submitted = false;
     });
