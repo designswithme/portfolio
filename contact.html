@@ -12,23 +12,74 @@
   <link rel="stylesheet" href="styles.css" />
 
   <style>
-    /* Make the MAIN area scrollable (without clipping content) */
-    .main {
-      min-height: 100vh;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
+    /* ---------------------------------------------------------
+       SCROLL FIX (your issue: can't scroll past the submit row)
+       --------------------------------------------------------- */
+
+    /* Ensure the page can actually scroll on all devices */
+    html, body {
+      height: 100%;
     }
 
-    .contact-wrap { max-width: 980px; margin: 0 auto; padding-bottom: 60px; }
+    /* Keep layout stable but allow the main content to scroll fully */
+    .layout {
+      min-height: 100vh;
+    }
 
-    .contact-title { font-size: 42px; font-weight: 700; color: #a3d4c7; margin: 0 0 10px 0; }
-    .contact-desc  { color: #64aeb6; font-weight: 300; line-height: 1.7; max-width: 720px; margin: 0 0 36px 0; }
+    /* IMPORTANT: allow this flex/grid child to shrink so overflow works */
+    .main {
+      min-height: 0;                 /* critical for overflow in flex/grid layouts */
+      height: 100vh;                 /* keep the main viewport height */
+      overflow-y: auto;              /* scroll inside main area */
+      -webkit-overflow-scrolling: touch; /* keep this for smooth iOS scrolling */
+      padding-bottom: env(safe-area-inset-bottom);
+    }
 
-    .contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    .field { display: flex; flex-direction: column; gap: 8px; }
-    .field.full { grid-column: 1 / -1; }
+    /* Give extra breathing room so the submit button isn't clipped at the bottom */
+    .contact-wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 18px 120px;         /* extra bottom padding = scroll past submit */
+    }
 
-    .label { font-size: 13px; font-weight: 600; letter-spacing: 0.7px; color: #edbaa6; }
+    .contact-title {
+      font-size: 42px;
+      font-weight: 700;
+      color: #a3d4c7;
+      margin: 0 0 10px 0;
+      line-height: 1.1;
+    }
+
+    .contact-desc  {
+      color: #64aeb6;
+      font-weight: 300;
+      line-height: 1.7;
+      max-width: 720px;
+      margin: 0 0 36px 0;
+    }
+
+    .contact-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .label {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.7px;
+      color: #edbaa6;
+    }
 
     .input, .textarea {
       font-family: 'Poppins', sans-serif;
@@ -40,6 +91,8 @@
       background: white;
       color: #2c6f6a;
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .input::placeholder, .textarea::placeholder {
@@ -52,7 +105,10 @@
       box-shadow: 0 0 0 3px rgba(237, 186, 166, 0.25);
     }
 
-    .textarea { min-height: 170px; resize: vertical; }
+    .textarea {
+      min-height: 170px;
+      resize: vertical;
+    }
 
     .submit-row {
       grid-column: 1 / -1;
@@ -61,6 +117,7 @@
       gap: 16px;
       margin-top: 6px;
       flex-wrap: wrap;
+      padding-bottom: 14px; /* small buffer under the row */
     }
 
     .contact-note {
@@ -77,7 +134,7 @@
       display: none;
     }
 
-    /* Remove browser default black border/outline and keep button consistent */
+    /* Button consistency */
     .hero-btn {
       border: none !important;
       outline: none !important;
@@ -90,16 +147,21 @@
       box-shadow: 0 0 0 3px rgba(237, 186, 166, 0.35);
     }
 
-    /* Success message: only show the image after submit */
+    /* ---------------------------------------------------------
+       SUCCESS IMAGE POSITIONING (push down + align nicer)
+       --------------------------------------------------------- */
+
+    /* When success shows, make it sit lower and feel aligned with content/nav */
     .success-container {
       display: none;
-      margin-top: 40px;
+      min-height: calc(100vh - 40px); /* helps center/position inside main viewport */
+      padding-top: 70px;              /* pushes the image down */
       text-align: center;
       animation: fadeIn 0.4s ease forwards;
     }
 
     .success-container img {
-      max-width: 100%;
+      max-width: min(560px, 90%);
       height: auto;
       display: block;
       margin: 0 auto;
@@ -110,8 +172,25 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
+    /* ---------------------------------------------------------
+       MOBILE RESPONSIVE TUNING
+       --------------------------------------------------------- */
     @media (max-width: 860px) {
       .contact-form { grid-template-columns: 1fr; }
+
+      .contact-title { font-size: 34px; }
+      .contact-wrap { padding: 0 16px 120px; }
+
+      .success-container {
+        padding-top: 56px; /* slightly less push-down on smaller screens */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .contact-title { font-size: 30px; }
+      .contact-desc  { margin-bottom: 26px; }
+      .textarea { min-height: 160px; }
+      .success-container { padding-top: 52px; }
     }
   </style>
 </head>
@@ -142,7 +221,7 @@
     <main class="main">
       <div class="contact-wrap">
 
-        <!-- Intro (we will hide this on success) -->
+        <!-- Intro (hide this on success) -->
         <div id="contactIntro">
           <h1 class="contact-title">Get In Touch!</h1>
 
@@ -216,9 +295,17 @@
 
     function handleSubmitStart() {
       submitted = true;
+
       const status = document.getElementById("formStatus");
       status.style.display = "block";
       status.textContent = "Sending...";
+
+      // Ensure the user can scroll and the submit row isn't "stuck" at the bottom on some browsers
+      // (helps when keyboard is open on mobile)
+      setTimeout(() => {
+        const main = document.querySelector(".main");
+        if (main) main.scrollTop = main.scrollTop + 1;
+      }, 0);
     }
 
     document.getElementById("hidden_iframe").addEventListener("load", function () {
@@ -229,8 +316,12 @@
       document.getElementById("contactForm").style.display = "none";
       document.getElementById("formStatus").style.display = "none";
 
-      // Show success image only
+      // Show success image only (pushed down via CSS)
       document.getElementById("successMessage").style.display = "block";
+
+      // Scroll back to top so the success image is immediately visible
+      const main = document.querySelector(".main");
+      if (main) main.scrollTop = 0;
 
       submitted = false;
     });
